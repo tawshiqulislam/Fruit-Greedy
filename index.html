@@ -1,0 +1,225 @@
+<!Doctype html>
+<html lang="en" oncontextmenu="return false">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=360, height=360">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="generator" content="">
+		<title>Fruit Greedy</title>
+		
+		<link href="assets/css/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="assets/css/app.css" rel="stylesheet"  type="text/css">
+		<link rel="stylesheet" href="assets/css/fontawesome/fontawesome.min.css">
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+		<script defer src="./assets/js/script.js"></script>
+		<style>
+			body {font-family: Arial, Helvetica, sans-serif;}
+			
+			/* The Modal (background) */
+			.modal {
+			  display: none; /* Hidden by default */
+			  position: fixed; /* Stay in place */
+			  overflow: auto; /* Enable scroll if needed */
+			  font-size: 12px; 
+			}
+			
+			/* Modal Content */
+			.modal-content {
+			  background-color: #fefefe;
+			  border: 1px solid rgb(0, 139, 139);
+			}
+			
+			/* The Close Button */
+			.close {
+			  color: #000000;
+			  float: left;
+			  font-size: 20px;
+			  font-weight: bold;
+			  position: absolute;
+			  margin-left: 1%;
+			}
+			
+			.close:hover,
+			.close:focus {
+			  color: #000;
+			  cursor: pointer;
+			}
+			</style>
+	</head>
+	<!-- <p>%=game_user_id%></p> -->
+	<body class="fruit-greedy">
+		<div id="loader">
+			<img src="assets/images/preloader.gif" class="popuptext position-absolute top-50 start-50 translate-middle" class="col text-center" style="z-index: 1000; width:10%">
+		</div>
+		<div class="container-fluid popup">
+			<p class="popuptext position-absolute top-50 start-50 translate-middle" style="z-index: 3;" id="myPopup"><b style="font-size: 3vw;">Rolling</b></p>
+			<p class="popuptext position-absolute top-50 start-50 translate-middle" style="z-index: 3;" id="myPopup0"><b style="font-size: 3vw;">Button Blocked</b></p>
+			<!-- <p class="popuptext position-absolute top-50 start-50 translate-middle" style="z-index: 3;" id="firstMsg"><b style="font-size: 2vw;">Use Mobile View For Best Experience</b></p> -->
+			<p class="popuptext position-absolute top-50 start-50 translate-middle" style="z-index: 3;" id="myPopup1"><strong style="font-size: 3vw;">Low Balance</strong></p>
+			<div class="row">
+				<div class="col">
+					<img class="img-fluid top-0 start-0 float-left logo-top " src="assets/images/logo.png" width="50%" height="50%"/>
+					<!-- <button onclick="rules_popus()">Hey</button> -->
+					<button class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:22.1%; z-index: 11; left: 14% !important; top: 26% !important;" id="myBtn">Rules</button>
+					
+			<!-- The Modal -->
+<div id="myModal" class="modal" style="width:70%; height:40%; z-index: 20; left: 15% !important; top: 25% !important;">
+
+	<!-- Modal content -->
+	<div class="modal-content position-absolute" style="z-index: 11;">
+	  <p><span class="close">&times;</span></p>
+	  <br>
+	  <p style="color:black">&nbsp;* Use Mobile View For Best Experience!</p>
+	  <p style="color:black">&nbsp;* 50% chance to win <i>Low Value.</i></p>
+	  <p style="color:black">&nbsp;* 40% chance to win <i>Midium Value.</i></p>
+	  <p style="color:black">&nbsp;* 10% chance to win <i>High Value.</i></p>
+	  <p style="color:black"><b><i>&nbsp;* Don't Use This For Any Illegal Purpose *</i></b></p>
+	  <h6 style="color:black"><b><u>&nbsp;Contact</u></b></h6>
+	  <a href="https://github.com/tawshiqulislam"><p style="color:black">&nbsp;Dev github profile</p></a>
+	  <p style="color:black"><span><b>Email:</b></span> tawshiq.rafi02@gmail.com</p>
+	  <p style="color:black">&nbsp;<i> Reload the page if balance is low.</i> No data will be saved.</p>
+	</div>
+  
+</div>
+
+				</div>
+				<div class="col top-25 start-0 position-absolute" style="z-index: 2">
+					<img class="img-fluid mx-auto d-block" src="assets/images/app-logo-hover.png" width="50%"/>
+				</div>
+				<div class="col position-relative">
+					<i style="font-size:5vw; left: 59.6798% !important; top: 76.1654% !important;" class="position-absolute text-center text-white" id="demo" style="z-index:3"></i>
+					<img class="animation_top position-absolute img-fluid top-50 start-50 loader" style="z-index:2; display: block; margin: auto; margin-left: 20px; margin-top: -30px;" src="assets/images/loader.png" height="28%" width="28%">
+					</div>
+			</div> 
+			<div class="row"> 
+				<div class="col position-relative" style="z-index: 1; margin-top: -35%;">
+ 					<img class="img-fluid mx-auto d-block wheel" src="assets/images/wheel.png" width="50%"/> 
+					 <div id="blast" style="display: none">
+						<img src="assets/images/blast.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:18%; z-index: 99; left: 50.4045% !important; top: 77% !important;">
+					</div>
+				</div>
+			</div>
+
+			<div class="row fruit-box position-relative">
+				<div class="col">
+					<img src="assets/images/Mango.png" class="btn-img img-fluid mx-auto d-block" style="width:80%">
+						<p style="font-size:3vw;" id="win-price1" class="position-absolute text-white x-value1"> <!-- centered class in app.css-->
+							<b>x3</b>
+						</p>
+						<div id="blast1" style="display: none">
+							<img src="assets/images/fruit-effect.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:25%; z-index: 99; left: 13.5869% !important;">
+						</div>
+				</div>
+				<div class="col">
+					<img src="assets/images/Watermelon.png" class="btn-img img-fluid mx-auto d-block" width="80%">
+						<p style="font-size:3vw;" id="win-price1" class="position-absolute text-white x-value3"> <!-- centered class in app.css-->
+							<b>x3</b>
+						</p>
+						<div id="blast2" style="display: none" >
+							<img src="assets/images/fruit-effect.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:25%; z-index: 99; left: 46.978% !important;">
+						</div>
+				</div>
+				<div class="col">
+					<img src="assets/images/Orange.png" class="btn-img img-fluid mx-auto d-block" width="80%">
+						<p style="font-size:3vw;" id="win-price1" class="position-absolute text-white x-value2"> <!-- centered class in app.css-->
+							<b>x3</b>
+						</p>
+						<div id="blast3" style="display: none">
+							<img src="assets/images/fruit-effect.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:25%; z-index: 99; left: 80.2198% !important;">
+						</div>
+				</div>
+			</div>
+			
+			<div class="row fruit-box">
+				<div class="col">
+					<button type="button" class="btn fruit1 position-relative text-center" id="banana" onclick="myFruit1()">
+						<img src="assets/images/Mango-floating-board.png" class="btn-img img-fluid mx-auto d-block" style="width:100%">
+						<div id="fire1" style="display: none">
+							<img src="assets/images/win-firework.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:100%; z-index: 99;">
+						</div>
+						<p class="position-absolute text-dark centered0"> <!-- centered class in app.css-->
+							<b style="font-size:2vw;" class="">Pot</b>
+						</p>
+						<p class="position-absolute text-dark centered1"> <!-- centered class in app.css-->
+							<b id="rand-pot0" style="font-size:2vw;">0</b>
+						</p>
+						<hr style="height:4vw;" class="text-center">
+						<p class="position-absolute text-dark centered3"> <!-- centered class in app.css-->
+							<b style="font-size:2vw;">You:</b> <b id="total-count0" style="font-size:2vw;">0</b>
+						</p>
+					</button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn fruit3 position-relative text-center" id="strawberry"  onclick="myFruit2()">
+						<img src="assets/images/Watermelon-floating-board.png" class="btn-img img-fluid mx-auto d-block" width="100%">
+						<div id="fire2" style="display: none">
+							<img src="assets/images/win-firework.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:100%; z-index: 99;">
+						</div>
+						<p class="position-absolute text-dark centered0"> <!-- centered class in app.css-->
+							<b style="font-size:2vw;">Pot</b>
+						</p>
+						<p class="position-absolute text-dark centered1"> <!-- centered class in app.css-->
+							<b id="rand-pot1" style="font-size:2vw;">0</b>
+						</p>
+						<hr style="height:4vw;" class="text-center">
+						<p class="position-absolute text-dark centered3"> <!-- centered class in app.css-->
+							<b style="font-size:2vw;">You:</b> <b id="total-count1" style="font-size:2vw;">0</b>
+						</p>
+					</button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn fruit2 position-relative text-center" id="jackfruit"  onclick="myFruit3()">
+						<img src="assets/images/Orange-floating-board.png" class="btn-img img-fluid mx-auto d-block" width="100%">
+						<div id="fire3" style="display: none">
+							<img src="assets/images/win-firework.gif" class="btn-img img-fluid mx-auto d-block position-absolute text-dark centered" style="width:100%; z-index: 99;">
+						</div>
+						<p class="position-absolute text-dark centered0"> <!-- centered class in app.css-->
+							<b style="font-size:2vw;">Pot</b>
+						</p>
+						<p class="position-absolute text-dark centered1"> <!-- centered class in app.css-->
+							<b id="rand-pot2" style="font-size:2vw;">0</b>
+						</p>
+						<hr style="height:4vw;" class="text-center">
+						<p class="position-absolute text-dark centered3"> <!-- centered class in app.css-->
+							<b style="font-size:2vw;">You:</b> <b id="total-count2" style="font-size:2vw;">0</b>
+						</p>
+					</button>
+				</div>
+			</div>	
+			<div class="row result-box" style="margin-top: 2%; margin-bottom: 2%;">
+				<div class="col text-center">
+					<span class="badge badge-pill badge-success" style="margin-left:-5%;z-index: 10;font-size: 100%;">RESULT:</span>
+					<img id="result0" src="assets/images/Watermelon.png" style="width:10%">
+					<img id="result1" src="assets/images/Orange.png" style="width:10%">
+					<img id="result2" src="assets/images/Mango.png" style="width:10%">
+					<img id="result3" src="assets/images/Watermelon.png" style="width:10%">
+					<img id="result4" src="assets/images/Mango.png" style="width:10%">
+					<img id="result5" src="assets/images/Orange.png" style="width:10%">
+				</div>
+			</div>
+			<div class="row foot-box text-center" style="margin-top: 2%;">
+				<div class="col form-group text-center">
+					<i class="ri-vip-diamond-fill position-absolute" style="margin-left:-11%; margin-top: 1.5%; color:rgb(0, 0, 0);"></i>
+					<input class="form-control" type="text" class="form-control" style="font-size:4vw; width:180%; font-weight: bold;" id="user-balance" readonly>
+				</div>
+				<label class="col position-relative p-0" style="margin-left: 15%;">
+					<input type="radio" name="coin" id="c1" onclick="btn1Fun()">
+					<img src="assets/images/100.png" class="btn-img img-fluid mx-auto d-block position-absolute centered" style="width: 50%; z-index: 99; left: 48.7234% !important; top: 49.7701% !important;">
+				</label>
+				<label class="col position-relative p-0" style="margin-left: -4%;">
+					<input type="radio" name="coin" id="c2" onclick="btn2Fun()">
+					<img src="assets/images/1k.png" class="btn-img img-fluid mx-auto d-block position-absolute centered" style="width: 50%; z-index: 99; left: 48.7234% !important; top: 49.7701% !important;">
+				</label>
+				<label class="col position-relative p-0" style="margin-left: -4%;">
+					<input type="radio" name="coin" id="c3" onclick="btn3Fun()">
+					<img src="assets/images/10k.png" class="btn-img img-fluid mx-auto d-block position-absolute centered" style="width: 50%; z-index: 99; left: 48.7234% !important; top: 49.7701% !important;">
+				</label>
+				<label class="col position-relative p-0" style="margin-left: -4%;">
+					<input type="radio" name="coin" id="c4" onclick="btn4Fun()">
+					<img src="assets/images/100k.png" class="btn-img img-fluid mx-auto d-block position-absolute centered" style="width: 50%; z-index: 99; left: 48.7234% !important; top: 49.7701% !important;">
+				</label>
+			</div> 
+		</div> 
+	</body>
+</html>
