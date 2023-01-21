@@ -33,11 +33,11 @@
 			/* The Close Button */
 			.close {
 			  color: #000000;
-			  float: left;
+			  float: right;
 			  font-size: 20px;
 			  font-weight: bold;
-			  position: absolute;
-			  margin-left: 1%;
+			  position: fixed;
+			z-index: 9999;
 			}
 			
 			.close:hover,
@@ -68,7 +68,7 @@
 
 	<!-- Modal content -->
 	<div class="modal-content position-absolute" style="z-index: 1001;">
-	  <p><span class="close">&times;</span></p>
+	  <p><span class="close end-50">&times;</span></p>
 	  <br>
 	  <p style="color:black">&nbsp;* Use Mobile View For Best Experience!</p>
 	  <p style="color:black">&nbsp;* 50% chance to win <i>Low Value.</i></p>
